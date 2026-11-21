@@ -1,0 +1,540 @@
+/* ---------- Warna & font ---------- */
+:root {
+  --night: #150d2b;
+  --dusk: #2a1a52;
+  --deep: #0e0820;
+  --rose: #ff6f91;
+  --gold: #f6d48b;
+  --blush: #ffe4ea;
+  --mist: #d6cdee;
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(120% 90% at 50% 0%, var(--dusk) 0%, var(--night) 55%, var(--deep) 100%) fixed;
+  color: var(--mist);
+  font: 400 1.0625rem/1.65 var(--sans);
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 2rem 1.25rem 4.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font: italic 300 clamp(3rem, 12vw, 7.5rem) / 1 var(--serif);
+  letter-spacing: -0.02em;
+  color: var(--blush);
+  text-shadow: 0 0 40px rgba(255, 111, 145, 0.35);
+}
+
+.hero-sub {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 1.15rem;
+}
+
+.since {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.9rem, 3vw, 2rem);
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.2rem;
+}
+
+.num {
+  font: 500 clamp(1.8rem, 5vw, 2.8rem) / 1 var(--serif);
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.lbl {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.5rem;
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(214, 205, 238, 0.7);
+}
+
+/* ---------- Bagian umum ---------- */
+.section {
+  width: min(40rem, 100% - 2.5rem);
+  margin-inline: auto;
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+}
+
+.section h2 {
+  margin: 0 0 0.5rem;
+  font: 400 clamp(1.9rem, 4.5vw, 2.75rem) / 1.15 var(--serif);
+  color: var(--blush);
+}
+
+.section-intro {
+  margin: 0 0 2.25rem;
+  max-width: 44ch;
+}
+
+/* ---------- Perjalanan (timeline) ---------- */
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: linear-gradient(var(--gold), rgba(246, 212, 139, 0.1));
+}
+
+.timeline li {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: "✦";
+  position: absolute;
+  left: -2rem;
+  top: 0.1rem;
+  width: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(246, 212, 139, 0.8);
+}
+
+.when {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--rose);
+}
+
+.timeline h3 {
+  margin: 0.1rem 0 0.35rem;
+  font: 400 1.4rem / 1.25 var(--serif);
+  color: var(--blush);
+}
+
+.timeline p {
+  margin: 0;
+}
+
+/* ---------- Alasan (bintang yang bisa dibuka) ---------- */
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.85rem;
+}
+
+.reason {
+  display: grid;
+  place-items: center;
+  min-height: 9.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(246, 212, 139, 0.28);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--blush);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.reason:hover {
+  border-color: var(--rose);
+}
+
+.reason:focus-visible,
+.letter-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.reason .star {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: var(--gold);
+  filter: drop-shadow(0 0 8px rgba(246, 212, 139, 0.7));
+}
+
+.reason .text {
+  display: none;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.reason.open {
+  grid-column: 1 / -1;
+  min-height: 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 111, 145, 0.12);
+  border-color: var(--rose);
+}
+
+.reason.open .star {
+  display: none;
+}
+
+.reason.open .text {
+  display: block;
+  animation: pop 0.35s ease-out;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Surat ---------- */
+.letter-btn {
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--rose);
+  color: #240a1f;
+  font: 600 1rem var(--sans);
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.2s;
+}
+
+.letter-btn:hover {
+  background: #ff86a4;
+}
+
+.letter-btn:active {
+  transform: scale(0.97);
+}
+
+.paper {
+  margin-top: 1.75rem;
+  padding: clamp(1.5rem, 5vw, 2.75rem);
+  background: var(--blush);
+  color: #3a1b38;
+  border-radius: 4px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  font: 400 1.1rem / 1.85 var(--serif);
+  animation: unfold 0.5s ease-out;
+}
+
+.paper h3 {
+  margin: 0 0 1rem;
+  font: italic 400 1.5rem / 1.2 var(--serif);
+}
+
+.paper p {
+  margin: 0 0 1.1rem;
+}
+
+.paper .closing {
+  margin: 1.75rem 0 0;
+  text-align: right;
+  font-style: italic;
+}
+
+.paper .signature {
+  margin: 0;
+  text-align: right;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@keyframes unfold {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(214, 205, 238, 0.7);
+}
+
+/* ---------- Hormati pengaturan "kurangi gerakan" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Kata sandi ---------- */
+body.locked { overflow: hidden; }
+body.locked main { visibility: hidden; }
+
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(14, 8, 32, 0.55);
+}
+
+.gate-box {
+  width: min(24rem, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  text-align: center;
+}
+
+.gate-box h2 {
+  margin: 0;
+  font: italic 300 clamp(2rem, 8vw, 2.8rem) / 1.1 var(--serif);
+  color: var(--blush);
+}
+
+.gate-box p { margin: 0; }
+
+.gate-box input {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(246, 212, 139, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--blush);
+  font: inherit;
+  text-align: center;
+}
+
+.gate-box input:focus-visible,
+.music-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.gate-error { color: var(--rose); }
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Musik ---------- */
+.music-btn {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(246, 212, 139, 0.4);
+  border-radius: 999px;
+  background: rgba(21, 13, 43, 0.85);
+  color: var(--blush);
+  font: 600 0.9rem var(--sans);
+  cursor: pointer;
+}
+
+/* ---------- Galeri foto (geser, seperti playlist) ---------- */
+.track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar { display: none; }
+
+.track:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.track figure {
+  flex: 0 0 100%;
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.track img {
+  display: block;
+  width: min(100%, 22rem);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  -webkit-user-drag: none;
+}
+
+.track figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.car-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.car-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(246, 212, 139, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--blush);
+  font: 400 1.6rem / 1 var(--sans);
+  cursor: pointer;
+}
+
+.car-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: rgba(214, 205, 238, 0.35);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.dot[aria-current="true"] {
+  background: var(--rose);
+  transform: scale(1.3);
+}
+
+/* ---------- Teks rata kanan-kiri (justify) ---------- */
+/* Ganti "justify" dengan left, right, atau center kalau mau mengubah perataannya */
+.section { text-align: justify; hyphens: auto; }
+.reason .text { text-align: justify; }
+
+/* ---------- Pertanyaan setelah surat ---------- */
+.ask {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.ask-q {
+  margin: 0 0 1.25rem;
+  font: italic 300 clamp(1.6rem, 6vw, 2.2rem) / 1.2 var(--serif);
+  color: var(--blush);
+}
+
+.ask-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 3.5rem;
+}
+
+.no-btn {
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--blush);
+  font: 600 1rem var(--sans);
+  cursor: pointer;
+}
+
+.no-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.ask-reply {
+  margin: 0;
+  font: italic 400 1.3rem / 1.5 var(--serif);
+  color: var(--gold);
+}

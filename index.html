@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anniversary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+  <!-- Langit bintang + rasi hati + hati melayang (digambar oleh script.js) -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <!-- Layar kata sandi -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <form class="gate-box" id="gateForm">
+      <h2 id="gateTitle">Ada kejutan untukmu</h2>
+      <p>Masukkan kata sandinya untuk membuka.</p>
+      <label class="sr" for="gateInput">Kata sandi</label>
+      <input id="gateInput" type="password" autocomplete="off" required>
+      <p class="gate-error" id="gateError" role="alert" hidden>Kata sandinya belum tepat. Coba lagi ya.</p>
+      <button class="letter-btn" type="submit">Buka</button>
+    </form>
+  </div>
+
+  <button class="music-btn" id="musicBtn" type="button" aria-pressed="false" hidden>Putar musik</button>
+
+  <main>
+    <header class="hero">
+      <h1 id="names"></h1>
+      <p class="hero-sub" id="subtitle"></p>
+
+      <p class="since" id="since">Sudah bersama selama</p>
+      <div class="counter" id="counter"></div>
+
+      <p class="hint">Ketuk langit untuk mengirim hati</p>
+    </header>
+
+    <section class="section" aria-labelledby="storyTitle">
+      <h2 id="storyTitle">Perjalanan kita</h2>
+      <p class="section-intro">Beberapa titik kecil yang kalau disambung, jadi cerita kita.</p>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <section class="section" id="gallerySection" aria-labelledby="galleryTitle" hidden>
+      <h2 id="galleryTitle">Potret kita</h2>
+      <div class="carousel">
+        <div class="track" id="gallery" tabindex="0" role="region" aria-label="Galeri foto, geser untuk melihat foto lain"></div>
+        <div class="car-bar" id="carBar">
+          <button class="car-btn" id="prevBtn" type="button" aria-label="Foto sebelumnya">&#8249;</button>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <button class="car-btn" id="nextBtn" type="button" aria-label="Foto berikutnya">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reasonsTitle">
+      <h2 id="reasonsTitle">Alasan aku sayang kamu</h2>
+      <p class="section-intro">Ketuk satu bintang untuk membukanya.</p>
+      <div class="reasons-grid" id="reasonGrid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="letterTitle">
+      <h2 id="letterTitle">Surat untukmu</h2>
+      <p class="section-intro">Ada beberapa kalimat yang belum sempat kubilang langsung.</p>
+      <button class="letter-btn" id="openLetter" type="button" aria-expanded="false" aria-controls="letter">Buka surat</button>
+      <article class="paper" id="letter" hidden></article>
+
+      <div class="ask" id="ask" hidden>
+        <p class="ask-q" id="askQ"></p>
+        <div class="ask-btns">
+          <button class="letter-btn" id="yesBtn" type="button"></button>
+          <button class="no-btn" id="noBtn" type="button"></button>
+        </div>
+        <p class="ask-reply" id="askReply" hidden></p>
+      </div>
+    </section>
+
+    <footer class="foot" id="footer"></footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
